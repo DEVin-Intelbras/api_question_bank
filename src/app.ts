@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import questionsRoutes from './routes/questions.routes.js'
+import questionsRoutes from './routes/questions.routes'
 
 const app = express()
 
