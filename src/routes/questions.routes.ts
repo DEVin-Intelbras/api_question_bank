@@ -3,6 +3,6 @@ import { create } from "../controllers/question.controller";
 
 const questionsRoutes = Router()
 
-questionsRoutes.post('/questiosns', create)
+questionsRoutes.post('/questions', create)
 
 export default questionsRoutes

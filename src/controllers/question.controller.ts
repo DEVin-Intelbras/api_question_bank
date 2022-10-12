@@ -1,23 +1,17 @@
 import { Request, Response } from 'express'
 import { v4 as uuidv4 } from 'uuid'
+import { BodyCreateQuestion, Question } from '../types/questions.types'
 
-interface BodyCreateQuestion {
-  description: string
-  item_correct: string
-  item_a: string
-  item_b: string
-  item_c: string
-  item_d: string
-  item_e: string
-  score: number
-}
+//import { getConnection } from '../database/connection'
 
-export function create(
+let questions: Question[] = []
+
+export async function create(
   request: Request<{}, {}, BodyCreateQuestion>,
   response: Response
 ) {
 
-  const question = {
+  const question: Question = {
     id: uuidv4(),
     description: request.body.description,
     item_correct: request.body.item_correct,
@@ -29,5 +23,13 @@ export function create(
     score: request.body.score
   }
 
-  // salvar question
+  questions = [...questions, question]
+
+  /*
+  const database = getConnection()
+  database.data.questions.push(question)
+  await database.write()
+  */
+
+  response.status(201).json(question)
 }
