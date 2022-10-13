@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 import { BodyCreateQuestion, Question } from '../types/questions.types'
-
 //import { getConnection } from '../database/connection'
 
 let questions: Question[] = []
@@ -24,12 +23,6 @@ export async function create(
   }
 
   questions = [...questions, question]
-
-  /*
-  const database = getConnection()
-  database.data.questions.push(question)
-  await database.write()
-  */
 
   response.status(201).json(question)
 }
